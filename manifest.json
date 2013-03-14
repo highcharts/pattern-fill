@@ -1,0 +1,23 @@
+{
+    "name": "pattern-fill",
+    "title": "Pattern Fill",
+    "description": "Highcharts pattern fill plugin",
+    "keywords": [
+        "pattern",
+        "ui"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Torstein Hønsi",
+        "url": "https://github.com/highslide-software"
+    }
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/jquery/jquery-color/blob/2.1.2/MIT-LICENSE.txt"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
