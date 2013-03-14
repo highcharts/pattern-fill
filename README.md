@@ -1,7 +1,6 @@
 pattern-fill
 ============
 
-/**
  * Highcharts pattern fill plugin
  *
  * Author:         Torstein Hønsi
@@ -15,4 +14,3 @@ pattern-fill
  * - color1:       In oldIE, bright colors in the pattern image are replaced by this color. 
  *                 Not yet implemented in SVG.
  * - color2:       In oldIE, dark colors are replaced by this. 
- */
