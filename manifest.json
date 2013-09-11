@@ -1,12 +1,8 @@
 {
-    "name": "pattern-fill",
-    "title": "Pattern Fill",
-    "description": "Highcharts pattern fill plugin",
-    "keywords": [
-        "pattern",
-        "ui"
-    ],
+    "name": "Pattern-Fill",
     "version": "1.0.0",
+    "title": "Pattern Fill",
+    "jsfiddle": "http://jsfiddle.net/highcharts/ErU8H/",
     "author": {
         "name": "Torstein Hønsi",
         "url": "https://github.com/highslide-software"
@@ -14,10 +10,15 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/highslide-software/pattern-fill/blob/master/License.txt"
+            "url": "https://github.com/highslide-software/pattern-fill/blob/master/LICENSE"
         }
     ],
+    "description": "Highcharts pattern fill plugin.",
+    "keywords": [
+    	"pattern",
+    	"ui"
+    ],
     "dependencies": {
-        "highcharts": ">=2.3"
+        "Highcharts": ">=2.3.0"
     }
 }
