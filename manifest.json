@@ -1,8 +1,10 @@
 {
     "name": "Pattern-Fill",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "Pattern Fill",
-    "jsfiddle": "http://jsfiddle.net/highcharts/ErU8H/",
+    "demo": [
+        "http://jsfiddle.net/highcharts/ErU8H/"
+    ],
     "author": {
         "name": "Torstein Hønsi",
         "url": "https://github.com/highslide-software"
