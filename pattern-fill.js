@@ -1,8 +1,8 @@
 /**
  * Highcharts pattern fill plugin
  *
- * Author:         Torstein Hønsi
- * Last revision:  2013-02-06
+ * Author:         Torstein Honsi
+ * Last revision:  2014-04-29
  * License:        MIT License
  *
  * Options:
@@ -13,58 +13,68 @@
  *                 Not yet implemented in SVG.
  * - color2:       In oldIE, dark colors are replaced by this. 
  */
+
+/*global Highcharts */
 (function() {
+
+    'use strict';
+
     var idCounter = 0;
-    
-    Highcharts.wrap(Highcharts.Renderer.prototype, 'color', function(proceed, color, elem, prop) {
-        var markup;
+
+    Highcharts.wrap(Highcharts.SVGElement.prototype, 'fillSetter', function (proceed, color, prop, elem) {
+        var markup,
+            id,
+            pattern,
+            image;
         if (color && color.pattern && prop === 'fill') {
-            // SVG renderer
-            if (this.box.tagName == 'svg') {
-                var id = 'highcharts-pattern-'+ idCounter++;
-                var pattern = this.createElement('pattern')
-                        .attr({
-                            id: id,
-                            patternUnits: 'userSpaceOnUse',
-                            width: color.width,
-                            height: color.height
-                        })
-                        .add(this.defs),
-                    image = this.image(
-                        color.pattern, 0, 0, color.width, color.height
-                    )
-                    .add(pattern);
-                return 'url(' + this.url + '#' + id + ')';
-            
-            // VML renderer
-            } else {
+            id = 'highcharts-pattern-' + idCounter;
+            pattern = this.renderer.createElement('pattern')
+                .attr({
+                    id: id,
+                    patternUnits: 'userSpaceOnUse',
+                    width: color.width,
+                    height: color.height
+                })
+                .add(this.renderer.defs);
+            image = this.renderer.image(
+                color.pattern, 0, 0, color.width, color.height
+            ).add(pattern);
+            elem.setAttribute(prop, 'url(' + this.renderer.url + '#' + id + ')');
+        } else {
+            return proceed.call(this, color, prop, elem);
+        }
+    });
+    
+    if (Highcharts.VMLElement) {
+        Highcharts.wrap(Highcharts.Renderer.prototype.Element.prototype, 'fillSetter', function (proceed, color, prop, elem) {
                 
+            if (color && color.pattern && prop === 'fill') {
                 // Remove previous fills
                 if (elem.getElementsByTagName('fill').length) {
                     elem.removeChild(elem.getElementsByTagName('fill')[0]);                  
                 }
-                 
+                
                 // If colors are given, use those, else use the original colors
                 // of the pattern tile
                 if (color.color1 && color.color2) {
                     markup = ['<hcv:', prop, ' color="', color.color1, '" color2="', 
                               color.color2, '" type="pattern" src="', color.pattern, '" />'].join('');
                 } else {
-                    markup = this.prepVML(['<', prop, ' type="tile" src="', color.pattern, '" />']);
+                    markup = this.renderer.prepVML(['<', prop, ' type="tile" src="', color.pattern, '" />']);
                 }
                 
                 elem.appendChild(
                     document.createElement(markup)
                 );   
-               
+                
                 // Work around display bug on updating attached nodes
                 if (elem.parentNode.nodeType === 1) {
                     elem.outerHTML = elem.outerHTML
                 }
+                
+            } else {
+                return proceed.call(this, color, prop, elem);
             }
-            
-        } else {
-            return proceed.call(this, color, elem, prop);
-        }
-    });    
+        });
+    }
 })();

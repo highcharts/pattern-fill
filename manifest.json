@@ -1,6 +1,6 @@
 {
     "name": "Pattern-Fill",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "title": "Pattern Fill",
     "demo": [
         "http://jsfiddle.net/highcharts/ErU8H/"
@@ -15,12 +15,12 @@
             "url": "https://github.com/highslide-software/pattern-fill/blob/master/LICENSE"
         }
     ],
-    "description": "Highcharts pattern fill plugin.",
+    "description": "Highcharts pattern fill plugin for Highcharts 4. For Highcharts 3.x, the pattern fill version 1.0.x was used.",
     "keywords": [
     	"pattern",
     	"ui"
     ],
     "dependencies": {
-        "Highcharts": ">=2.3.0"
+        "Highcharts": ">=4.0.0"
     }
 }
