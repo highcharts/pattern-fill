@@ -40,6 +40,7 @@
                 color.pattern, 0, 0, color.width, color.height
             ).add(pattern);
             elem.setAttribute(prop, 'url(' + this.renderer.url + '#' + id + ')');
+            idCounter++;
         } else {
             return proceed.call(this, color, prop, elem);
         }
