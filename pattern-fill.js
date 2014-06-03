@@ -27,7 +27,7 @@
             pattern,
             image;
         if (color && color.pattern && prop === 'fill') {
-            id = 'highcharts-pattern-' + idCounter;
+            id = 'highcharts-pattern-' + idCounter++;
             pattern = this.renderer.createElement('pattern')
                 .attr({
                     id: id,
