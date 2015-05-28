@@ -2,13 +2,14 @@
  * Highcharts pattern fill plugin
  *
  * Author:         Torstein Honsi
- * Last revision:  2014-04-29
+ * Last revision:  2015-05-25
  * License:        MIT License
  *
  * Options:
  * - pattern:      The URL for a pattern image file
  * - width:        The width of the image file
  * - height:       The height of the image file
+ * - fillColor:    Fill color of the rectangle under the pattern. 
  * - color1:       In oldIE, bright colors in the pattern image are replaced by this color. 
  *                 Not yet implemented in SVG.
  * - color2:       In oldIE, dark colors are replaced by this. 
@@ -25,7 +26,8 @@
         var markup,
             id,
             pattern,
-            image;
+            image,
+            rect;
         if (color && color.pattern && prop === 'fill') {
             id = 'highcharts-pattern-' + idCounter++;
             pattern = this.renderer.createElement('pattern')
@@ -36,6 +38,11 @@
                     height: color.height
                 })
                 .add(this.renderer.defs);
+                if (color.fillColor) {
+                    rect = this.renderer.rect(0, 0, color.width, color.height)
+                    .attr("fill",color.fillColor)
+                    .add(pattern);
+                }
             image = this.renderer.image(
                 color.pattern, 0, 0, color.width, color.height
             ).add(pattern);
