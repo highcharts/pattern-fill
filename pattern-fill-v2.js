@@ -12,24 +12,31 @@
  *                 Create a 'patterns' array under 'defs'
  *                 Each item in this array represents a pattern
  *                 To use a pattern, set the color to `url(#id-of-pattern)'
- * 
+ *                 @example
+ *                 series: [ {
+ *                   type: 'column',
+ *                   data: [1, 2, 3],
+ *                   color: 'url(#highcharts-default-pattern-9)'
+ *                 }]
+ *
  * Options for the patterns:
  * - id:           The id for the pattern, defaults to highcharts-pattern-# with # an increasing number for each pattern without id
  * - width:        The width of the pattern, defaults to 10
  * - height:       The height of the pattern, defaults to 10
  * - path:         In SVG, the path for the pattern
  *                 (Note: this can be a string with only a path, or an object with d, stroke, strokewidth, ...)
- * - image:        An image source for the pattern 
+ * - image:        An image source for the pattern
  * - color:        A color to be used instead of a path
  *
  * Notes:          VML does not support the path setting
  *                 If all other fills fail (no path, image or color) the pattern will return #A0A0A0 as a color
  *                 Several patterns have been predefined, called highcharts-default-pattern-# (numbered 0-9)
+ *
  */
 
 /*global Highcharts */
-(function() {
-    
+(function(Highcharts) {
+
     'use strict';
 
     var idCounter = 0,
@@ -48,16 +55,16 @@
         'M 2 5 L 5 2 L 8 5 L 5 8 Z',
         'M 0 0 L 5 10 L 10 0'
     ];
-    
+
     //// SVG RENDERER
-    Highcharts.SVGRenderer.prototype.addPattern = function (id, options) {
-        var id = id || ('highcharts-pattern-'+idCounter++),
+    Highcharts.SVGRenderer.prototype.addPattern = function(id, options) {
+        var id = id || ('highcharts-pattern-' + idCounter++),
             pattern = this.createElement('pattern').attr({
-            id: id,
-            patternUnits: 'userSpaceOnUse',
-            width: options.width || 10,
-            height: options.height || 10
-        }).add(this.defs);
+                id: id,
+                patternUnits: 'userSpaceOnUse',
+                width: options.width || 10,
+                height: options.height || 10
+            }).add(this.defs);
 
         // get id
         pattern.id = pattern.element.id;
@@ -66,7 +73,7 @@
             var path = options.path;
             this.createElement('path').attr({
                 'd': path.d || path,
-                'stroke': path.stroke  || '#343434',
+                'stroke': path.stroke || '#343434',
                 'stroke-width': path.strokeWidth || 2,
                 'fill': path.fill || 'transparent'
             }).add(pattern);
@@ -78,7 +85,7 @@
                 h = options.height || 10;
 
             this.createElement('path').attr({
-                'd': 'M 0 0 L 0 '+h+' L '+w+' '+h+' L '+w+' 0 Z',
+                'd': 'M 0 0 L 0 ' + h + ' L ' + w + ' ' + h + ' L ' + w + ' 0 Z',
                 'fill': options.color,
                 'stroke-width': 0
             }).add(pattern);
@@ -88,25 +95,26 @@
 
     if (Highcharts.VMLElement) {
 
-        Highcharts.VMLRenderer.prototype.addPattern = function (id, options) { 
-            var id = id || ('highcharts-pattern-'+idCounter++),
-                patterns = this.patterns || {};
+        Highcharts.VMLRenderer.prototype.addPattern = function(id, options) {
+            var patterns = this.patterns || {};
+
+            id = id || ('highcharts-pattern-' + idCounter++);
             patterns[id] = options;
             this.patterns = patterns;
         };
 
-        Highcharts.wrap(Highcharts.VMLRenderer.prototype.Element.prototype, 'fillSetter', function (proceed, color, prop, elem) {
-            if (typeof color === 'string' && color.substring(0,5) === 'url(#') {
-                var id = color.substring(5, color.length-1),
+        Highcharts.wrap(Highcharts.VMLRenderer.prototype.Element.prototype, 'fillSetter', function(proceed, color, prop, elem) {
+            if (typeof color === 'string' && color.substring(0, 5) === 'url(#') {
+                var id = color.substring(5, color.length - 1),
                     pattern = this.renderer.patterns[id],
                     markup;
-            
+
                 if (pattern.image) {
                     // Remove Previous fills                    
                     if (elem.getElementsByTagName('fill').length) {
                         elem.removeChild(elem.getElementsByTagName('fill')[0]);
                     }
-                    
+
                     markup = this.renderer.prepVML(['<', prop, ' type="tile" src="', pattern.image, '" />']);
                     console.log(markup);
                     elem.appendChild(document.createElement(markup));
@@ -122,13 +130,13 @@
                     proceed.call(this, '#A0A0A0', prop, elem);
                 }
             } else {
-                proceed.call(this, color, prop, elem);                
+                proceed.call(this, color, prop, elem);
             }
         });
     }
 
     //// ADD PATTERNS TO THE DEFS
-    Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function (proceed) {
+    Highcharts.wrap(Highcharts.Chart.prototype, 'getContainer', function(proceed) {
         proceed.apply(this);
 
         var chart = this,
@@ -140,14 +148,13 @@
         addPredefinedPatterns(renderer);
 
         if (patterns) {
-            each(patterns, function (pattern) {
-                var _pattern = 
+            each(patterns, function(pattern) {
                 renderer.addPattern((pattern.id || undefined), {
                     path: pattern.path,
                     image: pattern.image,
                     color: pattern.color,
                     width: pattern.width,
-                    height: pattern.height,
+                    height: pattern.height
                 });
             });
         }
@@ -158,12 +165,12 @@
     function addPredefinedPatterns(renderer) {
         var colors = Highcharts.getOptions().colors;
 
-        each(HighchartsPatterns, function (pattern, i) {
-            renderer.addPattern('highcharts-default-pattern-'+i, {
+        each(HighchartsPatterns, function(pattern, i) {
+            renderer.addPattern('highcharts-default-pattern-' + i, {
                 path: pattern,
                 color: colors[i]
             });
         });
     }
 
-})();
+})(Highcharts);
