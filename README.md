@@ -28,13 +28,14 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
 Versions 1.x are compatible with Highcharts 3. Versions 2.x are compatible with Highcharts 4.
  
 ## Options for version 1:
-`pattern`
+
+- `pattern`
   The URL for a pattern image file
-`width`
+- `width`
   The width of the image file
-`height`
+- `height`
   The height of the image file
-`color1`
+- `color1`
   In oldIE, bright colors in the pattern image are replaced by this color. Not yet implemented in SVG.
-`color2`
+- `color2`
   In oldIE, dark colors are replaced by this. 
