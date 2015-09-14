@@ -20,7 +20,8 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
 ```
 
 ## Demos
-* [Default patterns](http://jsfiddle.net/highcharts/gqg618eb/)
+* [Pie with default patterns](http://jsfiddle.net/highcharts/gqg618eb/)
+* [Map with default patterns](http://jsfiddle.net/highcharts/3m1hjja6/)
 * [Custom pattern](http://jsfiddle.net/highcharts/jzy1unsv/)
 * [Version 1, oldIE compatible](http://jsfiddle.net/highcharts/ErU8H/)
  
