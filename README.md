@@ -24,18 +24,21 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
 * [Map with default patterns](http://jsfiddle.net/highcharts/3m1hjja6/)
 * [Custom pattern](http://jsfiddle.net/highcharts/jzy1unsv/)
 * [Version 1, oldIE compatible](http://jsfiddle.net/highcharts/ErU8H/)
+* [Opacity demo](http://jsfiddle.net/mjmkb5r4/)
+
  
 ## Compatibility
 Versions 1.x are compatible with Highcharts 3. Versions 2.x are compatible with Highcharts 4.
  
 ## Options for version 1:
-`pattern`
+
+- `pattern`
   The URL for a pattern image file
-`width`
+- `width`
   The width of the image file
-`height`
+- `height`
   The height of the image file
-`color1`
+- `color1`
   In oldIE, bright colors in the pattern image are replaced by this color. Not yet implemented in SVG.
-`color2`
+- `color2`
   In oldIE, dark colors are replaced by this. 
