@@ -23,6 +23,8 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
 * [Default patterns](http://jsfiddle.net/highcharts/gqg618eb/)
 * [Custom pattern](http://jsfiddle.net/highcharts/jzy1unsv/)
 * [Version 1, oldIE compatible](http://jsfiddle.net/highcharts/ErU8H/)
+* [Opacity demo](http://jsfiddle.net/mjmkb5r4/)
+
  
 ## Compatibility
 Versions 1.x are compatible with Highcharts 3. Versions 2.x are compatible with Highcharts 4.
