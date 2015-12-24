@@ -4,7 +4,7 @@ pattern-fill
 Highcharts plugin for creating pattern fills in any area, like area charts, chart backgrounds, plot bands or columns.
 
 ## Usage
-In version 2, add a `defs` object to the options. Create a `patterns` array under `defs`. Each item in this array represents a pattern. To use a pattern, set the color to `url(#id-of-pattern)'. Version 1 worked with oldIE, but the downside is that image files are required for the patterns.
+In version 2, add a `defs` object to the options. Create a `patterns` array under `defs`. Each item in this array represents a pattern. To use a pattern, set the color to `url(#id-of-pattern)`. Version 1 worked with oldIE, but the downside is that image files are required for the patterns.
 
 ```js
     defs: {
