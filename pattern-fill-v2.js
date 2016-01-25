@@ -43,8 +43,20 @@
     Highcharts.SVGRenderer.prototype.addPattern = function (id, options) {
         var pattern,
             path,
-            w,
-            h;
+            w = options.width || 10,
+            h = options.height || 10,
+            ren = this;
+
+        /**
+         * Add a rectangle for solid color
+         */
+        function rect (fill) {
+            ren.rect(0, 0, w, h)
+                .attr({
+                    fill: fill
+                })
+                .add(pattern);
+        }
 
         if (!id) {
             id = 'highcharts-pattern-' + idCounter;
@@ -64,11 +76,17 @@
         // Use an SVG path for the pattern
         if (options.path) {
             path = options.path;
+
+            // The background
+            if (path.fill) {
+                rect(path.fill);
+            }
+
+            // The pattern
             this.createElement('path').attr({
                 'd': path.d || path,
                 'stroke': path.stroke || options.color || '#343434',
-                'stroke-width': path.strokeWidth || 2,
-                'fill': path.fill || 'transparent'
+                'stroke-width': path.strokeWidth || 2
             }).add(pattern);
             pattern.color = options.color;
 
@@ -79,14 +97,9 @@
 
         // A solid color
         } else if (options.color) {
-            w = options.width || 10;
-            h = options.height || 10;
 
-            this.createElement('path').attr({
-                'd': 'M 0 0 L 0 ' + h + ' L ' + w + ' ' + h + ' L ' + w + ' 0 Z',
-                'fill': options.color,
-                'stroke-width': 0
-            }).add(pattern);
+            rect(options.color);
+
         }
         return pattern;
     };
