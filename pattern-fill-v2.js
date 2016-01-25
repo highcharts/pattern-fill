@@ -18,8 +18,9 @@
  * - id:           The id for the pattern, defaults to highcharts-pattern-# with # an increasing number for each pattern without id
  * - width:        The width of the pattern, defaults to 10
  * - height:       The height of the pattern, defaults to 10
+ * - opacity       A general opacity for the pattern
  * - path:         In SVG, the path for the pattern
- *                 (Note: this can be a string with only a path, or an object with d, stroke, strokewidth, ...)
+ *                 (Note: this can be a string with only a path, or an object with d, stroke, strokeWidth and fill)
  * - image:        An image source for the pattern 
  * - color:        A color to be used instead of a path
  *
@@ -101,6 +102,13 @@
             rect(options.color);
 
         }
+
+        if (options.opacity !== undefined) {
+            each(pattern.element.children, function (child) {
+                child.setAttribute('opacity', options.opacity);
+            });
+        }
+
         return pattern;
     };
 
