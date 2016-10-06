@@ -1,0 +1,24 @@
+{
+  "name": "highcharts-pattern-fill",
+  "version": "3.0.0",
+  "description": "Highcharts pattern fill plugin for Highcharts 4. For Highcharts 3.x, the pattern fill version 1.0.x was used.",
+  "main": "pattern-fill-v2.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:highcharts/pattern-fill.git"
+  },
+  "keywords": [
+    "pattern",
+    "fill",
+    "highcharts"
+  ],
+  "author": "Torstein Hønsi (https://github.com/highslide-software)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/highcharts/pattern-fill/issues"
+  },
+  "homepage": "https://github.com/highcharts/pattern-fill#readme",
+  "peerDependencies": {
+    "highcharts": "^4"
+  }
+}
