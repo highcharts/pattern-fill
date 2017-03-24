@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/highcharts/pattern-fill#readme",
   "peerDependencies": {
-    "highcharts": "^4"
+    "highcharts": ">=4"
   }
 }
