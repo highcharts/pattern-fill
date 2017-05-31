@@ -15,14 +15,16 @@
  *                 To use a pattern, set the color to `url(#id-of-pattern)'
  *
  * Options for the patterns:
- * - id:           The id for the pattern, defaults to highcharts-pattern-# with # an increasing number for each pattern without id
- * - width:        The width of the pattern, defaults to 10
- * - height:       The height of the pattern, defaults to 10
- * - opacity       A general opacity for the pattern
- * - path:         In SVG, the path for the pattern
- *                 (Note: this can be a string with only a path, or an object with d, stroke, strokeWidth and fill)
- * - image:        An image source for the pattern
- * - color:        A color to be used instead of a path
+ * - id:                  The id for the pattern, defaults to highcharts-pattern-# with # an increasing number for each pattern without id
+ * - width:               The width of the pattern, defaults to 10
+ * - height:              The height of the pattern, defaults to 10
+ * - backgroundColor:     A color to be used to fill the rect background
+ * - opacity:             A general opacity for the pattern
+ * - patternTransform:    The "transform" attribute, for example, "rotate(45)"
+ * - path:                In SVG, the path for the pattern
+ *                        (Note: this can be a string with only a path, or an object with d, stroke, strokeWidth and fill)
+ * - image:               An image source for the pattern
+ * - color:               A color to be used instead of a path
  *
  * Notes:          VML does not support the path setting
  *                 If all other fills fail (no path, image or color) the pattern will return #A0A0A0 as a color
@@ -73,6 +75,7 @@
         pattern = this.createElement('pattern').attr({
             id: id,
             patternUnits: 'userSpaceOnUse',
+            patternTransform: options.patternTransform || '',
             width: options.width || 10,
             height: options.height || 10
         }).add(this.defs);
@@ -85,15 +88,16 @@
             path = options.path;
 
             // The background
-            if (path.fill) {
-                rect(path.fill);
+            if (options.backgroundColor) {
+              rect(options.backgroundColor);
             }
 
             // The pattern
             this.createElement('path').attr({
                 'd': path.d || path,
                 'stroke': path.stroke || options.color || '#343434',
-                'stroke-width': path.strokeWidth || 2
+                'stroke-width': path.strokeWidth || 0,
+                'fill': path.fill
             }).add(pattern);
             pattern.color = options.color;
 
