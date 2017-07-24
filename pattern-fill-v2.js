@@ -1,7 +1,7 @@
 /**
  * Highcharts pattern fill plugin
  *
- * Version         3.0.0
+ * Version         3.0.1
  * Author:         Torstein Honsi
  *                 Stephane Vanraes
  * Last revision:  2016-10-05
