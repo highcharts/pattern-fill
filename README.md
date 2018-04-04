@@ -12,7 +12,7 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
             'id': 'custom-pattern',
             'path': {
                 d: 'M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
-	            stroke: Highcharts.getOptions().colors[0],
+	        stroke: Highcharts.getOptions().colors[0],
     	        strokeWidth: 3
             }
         }]
