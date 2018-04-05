@@ -12,11 +12,16 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
             'id': 'custom-pattern',
             'path': {
                 d: 'M 0 0 L 10 10 M 9 -1 L 11 1 M -1 9 L 1 11',
-	            stroke: Highcharts.getOptions().colors[0],
+	        stroke: Highcharts.getOptions().colors[0],
     	        strokeWidth: 3
             }
         }]
     },
+    // ... the rest of your chart data here ...
+    series: [{
+    	'data': [1, 2, 3, 4],
+	'color': 'url(#custom-pattern)'
+    }]
 ```
 
 ## Demos
@@ -29,13 +34,8 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
 Versions 1.x are compatible with Highcharts 3. Versions 2.x are compatible with Highcharts 4.
  
 ## Options for version 1:
-`pattern`
-  The URL for a pattern image file
-`width`
-  The width of the image file
-`height`
-  The height of the image file
-`color1`
-  In oldIE, bright colors in the pattern image are replaced by this color. Not yet implemented in SVG.
-`color2`
-  In oldIE, dark colors are replaced by this. 
+ * `pattern`: The URL for a pattern image file
+ * `width`: The width of the image file
+ * `height`: The height of the image file
+ * `color1`: In oldIE, bright colors in the pattern image are replaced by this color. Not yet implemented in SVG.
+ * `color2`: In oldIE, dark colors are replaced by this. 
