@@ -17,6 +17,11 @@ In version 2, add a `defs` object to the options. Create a `patterns` array unde
             }
         }]
     },
+    // ... the rest of your chart data here ...
+    series: [{
+    	'data': [1, 2, 3, 4],
+	'color': 'url(#custom-pattern)'
+    }]
 ```
 
 ## Demos
