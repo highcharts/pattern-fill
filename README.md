@@ -3,6 +3,16 @@ pattern-fill
 
 Highcharts plugin for creating pattern fills in any area, like area charts, chart backgrounds, plot bands or columns.
 
+# Deprecation notice
+Given the popularity of this plugin, it has been taken in as a Highcharts module since v6.1, and
+development will continue in the [official Highcharts repo](https://github.com/highcharts/highcharts/). This
+means it can be loaded from [code.highcharts.com](https://code.highcharts.com/modules/pattern-fill.js) and 
+is available with the [Highcharts npm package](https://www.npmjs.com/package/highcharts). Issues should now
+be reported in the [Highcharts repo](https://github.com/highcharts/highcharts/issues).
+See the [pattern fills blog article](https://www.highcharts.com/blog/a11y/pattern-fills/)
+for a tutorial, and [PatternOptions](https://api.highcharts.com/class-reference/global.html#PatternOptionsPatternOptions)
+in the API for options details.
+
 ## Usage
 In version 2, add a `defs` object to the options. Create a `patterns` array under `defs`. Each item in this array represents a pattern. To use a pattern, set the color to `url(#id-of-pattern)`. Version 1 worked with oldIE, but the downside is that image files are required for the patterns.
 
