@@ -10,7 +10,7 @@ means it can be loaded from [code.highcharts.com](https://code.highcharts.com/mo
 is available with the [Highcharts npm package](https://www.npmjs.com/package/highcharts). Issues should now
 be reported in the [Highcharts repo](https://github.com/highcharts/highcharts/issues).
 See the [pattern fills blog article](https://www.highcharts.com/blog/a11y/pattern-fills/)
-for a tutorial, and [PatternOptions](https://api.highcharts.com/class-reference/global.html#PatternOptionsPatternOptions)
+for a tutorial, and [PatternOptions](https://api.highcharts.com/class-reference/global.html#PatternOptions)
 in the API for options details.
 
 ## Usage
