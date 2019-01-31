@@ -1,25 +1,26 @@
 {
-  "name": "highcharts-pattern-fill",
-  "version": "3.0.3",
-  "description": "Highcharts pattern fill plugin for Highcharts 4. For Highcharts 3.x, the pattern fill version 1.0.x was used.",
-  "main": "pattern-fill-v2.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:highcharts/pattern-fill.git"
+  "author": "Torstein Hønsi <https://github.com/highslide-software>",
+  "bugs": {
+    "url": "https://github.com/highslide-software/pattern-fill/issues"
   },
+  "description": "Highcharts pattern fill plugin for Highcharts 4. For Highcharts 3.x, the pattern fill version 1.0.x was used.",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  },
+  "homepage": "https://github.com/highslide-software/pattern-fill#readme",
   "keywords": [
     "pattern",
-    "fill",
-    "highcharts",
-    "highcharts-addon"
+    "ui"
   ],
-  "author": "Torstein Hønsi (https://github.com/highslide-software)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/highcharts/pattern-fill/issues"
+  "main": "pattern-fill-v2.js",
+  "name": "pattern-fill",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/highslide-software/pattern-fill.git"
   },
-  "homepage": "https://github.com/highcharts/pattern-fill#readme",
-  "peerDependencies": {
-    "highcharts": ">=4"
-  }
+  "scripts": {
+    "build": "node node_modules/.bin/uglifyjs pattern-fill.js --source-map pattern-fill.min.js.map --source-map-include-sources -o pattern-fill.min.js -m && node node_modules/.bin/uglifyjs pattern-fill-v2.js --source-map pattern-fill-v2.min.js.map --source-map-include-sources -o pattern-fill-v2.min.js -m"
+  },
+  "version": "2.0.1"
 }
